@@ -3,7 +3,7 @@ import * as pull from 'pull-stream'
 // A pair of pull streams where one drains from the other
 export function pair() {
   let _read: pull.Source<any> | undefined
-  let waiting: [pull.Abort, pull.Source<any>] | undefined
+  let waiting: [pull.Abort, pull.SourceCallback<any>] | undefined
 
   const sink: pull.Sink<any> = (read?) => {
     if ('function' !== typeof read) {
